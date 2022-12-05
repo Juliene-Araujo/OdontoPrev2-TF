@@ -12,11 +12,9 @@ export const getSchedule = () => {
 
 const getScheduleById = (scheduleId) => {
   const scheduleById = getSchedule();
-  // console.log(scheduleById);
   const filter = scheduleById.filter(
     (schedule) => schedule.id === parseInt(scheduleId)
   );
-  // console.log(filter);
   if (filter !== null) {
     return filter[0];
   }
@@ -261,7 +259,6 @@ const createScheduleData = () => {
 };
 
 export const initData = () => {
-  // console.log("teste");
   createDentistsData();
   createPatientsData();
   createScheduleData();

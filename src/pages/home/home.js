@@ -50,17 +50,14 @@ export default () => {
 
   const nextImage = () => {
     imageSelected[imageIndex].classList.remove('selected');
-    console.log('dentro da função')
     imageIndex++
     if (imageIndex >= maxImage) {
       imageIndex = 0;
     }
     imageSelected[imageIndex].classList.add('selected');
-    console.log('dentro da função nova')
   }
 
   const start = () => {
-    console.log('teste');
     setInterval(() => { nextImage() }, time);
   }
   console.log(start);

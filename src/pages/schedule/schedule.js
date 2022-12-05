@@ -8,6 +8,9 @@ import {
 } from "../../lib/storage.js";
 
 export default () => {
+
+  const patient = getAuthPatient();
+  console.log(patient)
   const container = document.createElement('div');
   const template = `    
   <div class="my-schedule main-page-schedule">
@@ -51,22 +54,21 @@ export default () => {
   const menuStates = container.querySelector('#select-states');
   const menuCitys = container.querySelector('#select-citys');
   const inputSearch = container.querySelector('#input-search');
-  
+
   const btnHome = document.querySelector(".logo-img");
   btnHome.addEventListener("click", () => {
     window.location.hash = '#home';
   });
 
 
-  // menu Estado //
   const extractStates = (listState) => {
     const templateState = listState.map((dentist) => dentist.state);
     const templateSelect = templateState.filter((elem, i, array) => array.indexOf(elem) === i);
     menuStates.innerHTML += templateSelect.map((state) => `<option value="${state}">${state}</option>`);
   };
-    extractStates(dentistsData);
+  extractStates(dentistsData);
 
-  // menu Estado //
+
   const extractCitys = (listState) => {
     const templateCity = listState.map((dentist) => dentist.city);
     const templateSelect = templateCity.filter((elem, i, array) => array.indexOf(elem) === i);
@@ -74,21 +76,19 @@ export default () => {
   };
   extractCitys(dentistsData);
 
-  
+
   const printSchedule = (dentistList) => {
     table.innerHTML = '';
     const schedule = getSchedule();
     dentistList.forEach((dentist) => {
       const dentistsSchedule = schedule.filter((time) => time.status == 'available' && time.dentistUid == dentist.uid)
       const dentistsScheduleElement = dentistsSchedule.map(time => `
-
             <div class="schedule-date-time">
               <div class="detist-date">${convertData(time.date)}</div> 
-              ${
-                time.status === "available"
-                  ? `<div data-id=${time.id} class="schedule-date schedule-time">${time.time} :00 `
-                  : ""
-              }
+              ${time.status === "available"
+          ? `<div data-id=${time.id} class="schedule-date schedule-time">${time.time} :00 `
+          : ""
+        }
               <div class="modal modal-appointments">
               <div class="internal-modal">
                 <p> Deseja confirmar seu agendamento?</p>
@@ -102,9 +102,8 @@ export default () => {
             </div>
               </div>
           </div>
-
           `).join('');
-               table.innerHTML += `
+      table.innerHTML += `
           <div class="dentist-template">
             <div class="dentist-info">
               <div class="dentist-picture"> 
@@ -116,23 +115,24 @@ export default () => {
             ${dentistsScheduleElement}
           </div>`;
     })
-      
+
+
     const availability = table.querySelectorAll(".schedule-date");
     availability.forEach((avail) => {
       avail.addEventListener("click", (e) => {
         const patient = getAuthPatient();
         const id = e.currentTarget.dataset.id;
         const modal = e.currentTarget.querySelector('.modal');
-        if (id){
+        if (id) {
           modal.style.display = 'flex';
         }
-        if (e.target.dataset.sim){
+        if (e.target.dataset.sim) {
           modal.style.display = 'none';
           const patient = getAuthPatient();
           scheduleAppointment(id, patient.uid)
           printSchedule(dentistList);
         }
-        if (e.target.dataset.nao){
+        if (e.target.dataset.nao) {
           modal.style.display = 'none';
         }
       });
@@ -141,11 +141,11 @@ export default () => {
 
 
   printSchedule(dentistsData);
- 
-  // template da agenda do beneficiário
-  const printSchedulePatient = () => {  
+
+
+  const printSchedulePatient = () => {
     const templatePatients = getSchedule()
-      .filter((time) => time.patientUid === patientsData.uid && time.status == "confirmed" )
+      .filter((time) => time.patientUid === patientsData.uid && time.status == "confirmed")
       .map((time) => {
         const dentist = dentistsData.find((dentist) => dentist.uid == time.dentistUid);
         return `
@@ -176,7 +176,7 @@ export default () => {
   };
 
   printSchedulePatient();
-  
+
   const cancelBtn = tablePatient.querySelectorAll('.btn-cancel-appointment');
 
   cancelBtn.forEach((btn) => {
@@ -184,11 +184,11 @@ export default () => {
       const target = el.currentTarget.dataset.id;
       const targetParent = el.target.parentElement.dataset;
       const modal = el.target.parentElement.querySelector('.modal');
-      if (target){
+      if (target) {
         modal.style.display = 'flex';
         modal.addEventListener("click", (e) => {
           const action = e.target.dataset.action;
-          switch(action){
+          switch (action) {
             case "confirm":
               cancelAppointment(target);
               modal.style.display = 'none';
@@ -204,7 +204,7 @@ export default () => {
   });
 
   const filterSearch = (dentists, text) =>
-  dentists.filter((dentist) => dentist.address.toLowerCase().includes(text.toLowerCase()) || dentist.name.toLowerCase().includes(text.toLowerCase()));
+    dentists.filter((dentist) => dentist.address.toLowerCase().includes(text.toLowerCase()) || dentist.name.toLowerCase().includes(text.toLowerCase()));
   console.log(filterSearch);
 
   inputSearch.addEventListener("input", () => {
