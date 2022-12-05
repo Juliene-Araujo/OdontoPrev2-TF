@@ -1,0 +1,79 @@
+.container-login-patient {  
+  align-items: center;
+}
+
+.box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1%;
+}
+
+.login-form{
+  border: 5px solid black;
+}
+
+.login-logo, 
+.login-form {
+  width: 50%;  
+}
+
+.login-logo {
+  background: #001b30;
+  display: flex;
+  justify-content: center;
+  height: 29rem;
+  width: 17rem;
+}
+
+.login-form {
+  background: linear-gradient(201.43deg, #001B30 8.37%, #009BDD 54.13%, #00233F 100.02%, #004F8D 100.03%, #001B30 100.04%);
+  border: 1px solid #001D68;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  gap:1rem;
+  flex-direction: column;
+  align-items: center;
+  height: 29rem;
+  width: 26rem; 
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+}
+
+.welcome {
+  font-size: 17px;
+  font-weight: bold;
+  color: white;
+  margin-top: 4rem;
+}
+
+.input-login-patient {
+  border-radius: 4px;
+  border-width: 1px;
+  box-shadow: 0px 1px 4px 0px #000000;
+  width: 16rem;
+  height: 34px;
+  border-color: #001b30;
+  padding: 1rem;
+
+}
+
+.login-patient-btn {
+  border-radius: 50px;
+  width: 140px;
+  height: 47px;
+  color: white;
+  background-color: #001b30;
+  font-size: 20px;
+  margin-top: 2rem;
+  font-weight: bold;
+  border: 0;
+  box-shadow: 0px 2px 2px #000000;
+}
+
+.login-patient-btn:hover {
+  background-color: #003863;
+  transition: 1.5s;
+  cursor: pointer;
+}

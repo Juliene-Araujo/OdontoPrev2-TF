@@ -1,0 +1,95 @@
+.body-home{
+    border: 2px solid black;
+    background: linear-gradient(127.78deg, #001B30 28.17%, #0C508E 48.4%, #047AAD 73.86%, #047AAD 103.23%, rgba(170, 219, 240, 0) 153.5%);
+}
+.container-home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 5%;
+    padding: 0;
+    background-color: white;
+}
+
+.text-title-home{
+    text-align: center;
+}
+
+.text-home{
+    display: flex;
+    gap: 2rem;
+    margin: 10% 5% 5% 5%;
+}
+
+.space-btn-home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+.btn-home{
+    margin:5%;
+    cursor:pointer;
+    padding: 10px;
+    width: 150px;
+    border-radius: 15px;
+    background-color: #009BDD;
+    color: white;
+    font-size: large;
+    border: #009BDD;
+}
+
+.btn-patients{
+    background-image: url("/assets/icons/others/user-beneficiary.svg");
+    background-repeat: no-repeat;
+    text-align: end;
+}
+
+.btn-dentist{
+    background-image: url("/assets/icons/others/tooth.svg");
+    background-repeat: no-repeat;
+    padding-left: 9%;
+}
+
+.odonto-home{
+    color: rgba(0, 29, 104, 1);
+    margin: 0;
+}
+
+.slider {
+    width: 100%;
+    height: 25vw;
+    max-height: 500px;
+    display: flex;
+    position: relative;
+    float: right;
+}
+
+.slider img{
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 800ms;
+}
+
+.slider img.selected { 
+    opacity: 1;
+}
+
+.h1 {
+    text-align: left;
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+.odonto {
+    color: #001B30;
+}
+
+.prev {
+    color: #047AAD;
+}
